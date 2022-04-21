@@ -11,6 +11,7 @@ export const resolvers: IResolvers = {
       return authors;
     }
   },
+
   Author: {
     books(parent) {
       return books.filter((book) => parent.books?.includes(book.id));

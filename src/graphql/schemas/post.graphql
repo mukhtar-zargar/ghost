@@ -1,0 +1,22 @@
+type Post {
+  headline: String!
+  body: String!
+  postedBy: User!
+  createdAt: String
+  updatedAt: String
+}
+
+input PostDetails {
+  headline: String!
+  body: String!
+  postedBy: String!
+}
+
+extend type Query {
+  post(id: ID!): Post
+  posts: [Post]
+}
+
+extend type Mutation {
+  addPost(details: PostDetails): Post
+}

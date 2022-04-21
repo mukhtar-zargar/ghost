@@ -2,14 +2,11 @@ import express from "express";
 import { ApolloServer } from "apollo-server-express";
 import { ApolloServerPluginDrainHttpServer } from "apollo-server-core";
 import http from "http";
-import dotenv from "dotenv";
 import cors from "cors";
 
 import schema from "./graphql";
-
-dotenv.config();
-
-const port = process.env.PORT || 3000;
+import { initDB } from "./db/db.config";
+import { AppSettings } from "./settings/app.settings";
 
 const app = express();
 
@@ -25,6 +22,8 @@ app.get("/", (_, res) => {
 });
 
 async function startApolloServer(schema) {
+  initDB();
+
   const httpServer = http.createServer(app);
   const server = new ApolloServer({
     schema,
@@ -36,8 +35,10 @@ async function startApolloServer(schema) {
 
   server.applyMiddleware({ app, path: "/graphql" });
 
-  httpServer.listen({ port }, () => {
-    console.log(`GraphQL Server listening at http://localhost:${port}/graphql`);
+  httpServer.listen({ port: AppSettings.PORT }, () => {
+    console.log(
+      `GraphQL Server listening at http://localhost:${AppSettings.PORT}/graphql`
+    );
   });
 }
 

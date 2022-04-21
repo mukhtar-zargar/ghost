@@ -1,23 +1,28 @@
 import "graphql-import-node";
-import { makeExecutableSchema } from "graphql-tools";
+import { makeExecutableSchema } from "@graphql-tools/schema";
 import { merge } from "lodash";
 
-import { resolvers as authorResolver } from "./resolvers/authorResolver";
-import { resolvers as bookResolver } from "./resolvers/bookResolver";
+import { resolvers as authorResolver } from "./resolvers/author.resolver";
+import { resolvers as bookResolver } from "./resolvers/book.resolver";
+import { resolvers as userResolver } from "./resolvers/user.resolver";
+import { resolvers as postResolver } from "./resolvers/post.resolver";
+import * as baseQuery from "./schemas/base.graphql";
 import * as booksQuery from "./schemas/book.graphql";
 import * as authorQuery from "./schemas/author.graphql";
-
-const query = `
-    type Query {
-        _empty: String
-    }
-`;
+import * as userQuery from "./schemas/user.graphql";
+import * as postQuery from "./schemas/post.graphql";
 
 const resolvers = {};
 
 const schema = makeExecutableSchema({
-  typeDefs: [query, booksQuery, authorQuery],
-  resolvers: merge(resolvers, bookResolver, authorResolver)
+  typeDefs: [baseQuery, booksQuery, authorQuery, userQuery, postQuery],
+  resolvers: merge(
+    resolvers,
+    bookResolver,
+    authorResolver,
+    userResolver,
+    postResolver
+  )
 });
 
 export default schema;

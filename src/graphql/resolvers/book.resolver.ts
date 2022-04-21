@@ -11,6 +11,7 @@ export const resolvers: IResolvers = {
       return books;
     }
   },
+
   Book: {
     author(parent) {
       return authors.find((author) => author.name === parent.author);

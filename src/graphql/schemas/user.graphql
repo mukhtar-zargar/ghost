@@ -1,0 +1,23 @@
+type User {
+  name: String!
+  email: String!
+  avatar: String
+  savedPosts: [Post]
+  createdAt: String
+  updatedAt: String
+}
+
+input UserDetails {
+  name: String!
+  email: String!
+  avatar: String
+}
+
+extend type Query {
+  user(id: ID!): User
+  users: [User]
+}
+
+extend type Mutation {
+  addUser(details: UserDetails): User
+}
