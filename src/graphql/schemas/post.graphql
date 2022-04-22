@@ -10,12 +10,12 @@ type Post {
 input PostDetails {
   headline: String!
   body: String!
-  postedBy: String!
 }
 
 extend type Query {
   post(id: ID!): Post
   posts(page: Int, pageSize: Int): [Post]
+  getAllUserPosts(page: Int, pageSize: Int): [Post]
 }
 
 extend type Mutation {

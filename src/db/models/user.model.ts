@@ -1,7 +1,9 @@
 import mongoose from "mongoose";
 
 import { AppSettings } from "../../settings/app.settings";
-import { UserDocument } from "../../types";
+import { TUser } from "../../types";
+
+type UserDocument = mongoose.Document & TUser;
 
 const UserSchema = new mongoose.Schema(
   {
@@ -20,7 +22,8 @@ const UserSchema = new mongoose.Schema(
         type: mongoose.Schema.Types.ObjectId,
         ref: AppSettings.POST_COLLECTION
       }
-    ]
+    ],
+    password: String
   },
   { timestamps: true }
 );

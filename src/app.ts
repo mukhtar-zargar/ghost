@@ -28,7 +28,10 @@ async function startApolloServer(schema) {
   const server = new ApolloServer({
     schema,
     plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
-    introspection: true
+    introspection: true,
+    context: async ({ req }) => ({
+      req
+    })
   });
 
   await server.start();

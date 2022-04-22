@@ -1,7 +1,9 @@
 import mongoose from "mongoose";
 
 import { AppSettings } from "../../settings/app.settings";
-import { PostDocument } from "../../types";
+import { TPost } from "../../types";
+
+type PostDocument = mongoose.Document & TPost;
 
 const PostSchema = new mongoose.Schema(
   {
