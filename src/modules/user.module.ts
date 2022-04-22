@@ -17,3 +17,31 @@ export const addUser = async (args: any) => {
     throw err;
   }
 };
+
+export const getUserById = async (id: string) => {
+  try {
+    const user = await User.findById(id);
+    if (!user) {
+      throw new UserInputError("Invalid ID");
+    }
+    return user;
+  } catch (err) {
+    console.log("Error getUserById", err);
+    throw err;
+  }
+};
+
+export const getAllUsers = async ({ page = 1, pageSize = 10 }) => {
+  try {
+    if (page < 1) {
+      page = 1;
+    }
+    const users = await User.find({})
+      .skip((page - 1) * pageSize)
+      .limit(pageSize);
+    return users;
+  } catch (err) {
+    console.log("Error getAllUsers", err);
+    throw err;
+  }
+};

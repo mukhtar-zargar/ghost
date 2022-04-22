@@ -1,4 +1,5 @@
 type User {
+  _id: ID!
   name: String!
   email: String!
   avatar: String
@@ -15,9 +16,9 @@ input UserDetails {
 
 extend type Query {
   user(id: ID!): User
-  users: [User]
+  users(page: Int, pageSize: Int): [User]
 }
 
 extend type Mutation {
-  addUser(details: UserDetails): User
+  addUser(details: UserDetails!): User
 }

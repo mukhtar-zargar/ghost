@@ -1,4 +1,5 @@
 type Post {
+  _id: ID!
   headline: String!
   body: String!
   postedBy: User!
@@ -14,9 +15,9 @@ input PostDetails {
 
 extend type Query {
   post(id: ID!): Post
-  posts: [Post]
+  posts(page: Int, pageSize: Int): [Post]
 }
 
 extend type Mutation {
-  addPost(details: PostDetails): Post
+  addPost(details: PostDetails!): Post
 }
