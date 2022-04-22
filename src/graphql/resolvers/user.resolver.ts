@@ -1,11 +1,19 @@
 import { IResolvers } from "@graphql-tools/utils";
 
-import { addUser, getAllUsers, getUserById } from "../../modules/user.module";
+import {
+  addUser,
+  getAllUsers,
+  getUserById,
+  savePost
+} from "../../modules/user.module";
 
 export const resolvers: IResolvers = {
   Mutation: {
     addUser(_, args) {
       return addUser(args);
+    },
+    savePost(_, args) {
+      return savePost(args);
     }
   },
   Query: {
@@ -16,9 +24,4 @@ export const resolvers: IResolvers = {
       return getAllUsers(args);
     }
   }
-  //   User: {
-  //     savedPosts() {
-
-  //     }
-  //   }
 };
