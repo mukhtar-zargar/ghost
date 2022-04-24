@@ -26,3 +26,9 @@ export type TUserLogin = {
   email: string;
   password: string;
 };
+
+export interface IFormatResponse {
+  success: boolean;
+  code: string;
+  message: string;
+}
