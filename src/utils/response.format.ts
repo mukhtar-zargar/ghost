@@ -12,12 +12,7 @@ class FormatResponse implements IFormatResponse {
 }
 
 export class UserFormatResponse extends FormatResponse {
-  constructor(
-    success: boolean,
-    message: string,
-    code: string,
-    user: TUser
-  ) {
+  constructor(success: boolean, message: string, code: string, user: TUser) {
     super(success, message, code);
     this.user = user;
   }
@@ -25,12 +20,7 @@ export class UserFormatResponse extends FormatResponse {
 }
 
 export class PostFormatResponse extends FormatResponse {
-  constructor(
-    success: boolean,
-    message: string,
-    code: string,
-    post: TPost
-  ) {
+  constructor(success: boolean, message: string, code: string, post: TPost) {
     super(success, message, code);
     this.post = post;
   }

@@ -1,5 +1,6 @@
 {
-  "watch": "src/**/*.ts",
+  "watch": ["src", ".env"],
+  "ext": "*.ts,*.graphql,env",
   "execMap": {
     "ts": "node ./node_modules/ts-node/dist/bin.js"
   }
