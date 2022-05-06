@@ -3,6 +3,7 @@ import { ApolloServer } from "apollo-server-express";
 import { ApolloServerPluginDrainHttpServer } from "apollo-server-core";
 import http from "http";
 import cors from "cors";
+import "reflect-metadata";
 
 import schema from "./graphql";
 import { initDB } from "./db/db.config";
